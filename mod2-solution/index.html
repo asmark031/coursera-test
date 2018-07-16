@@ -38,7 +38,8 @@
       <!-- To Buy List -->
       <div class="col-md-6" ng-controller="ToBuyController as ctrl1">
         <h2>To Buy:</h2>
-        <ul ng-repeat="item in ctrl1.items">
+        <input type="text" ng-model="value">
+        <ul ng-repeat="item in ctrl1.items | filter : value">
           <li>Buy {{item.Quantity}} {{item.Name}}
             <button class="btn btn-default" ng-click="ctrl1.bought($index,item.Name,item.Quantity)">
               <span class="glyphicon glyphicon-ok"></span> Bought</button>
@@ -55,6 +56,13 @@
         </ul>
         <div ng-show="ctrl2.items.length==0" class="emptyMessage">Nothing bought yet.</div>
       </div>
+    </div>
+    <!-- <div ng-controller="testingFilter">
+      {{hello}}
+      {{"Abhishek" | custom}}
+    </div> -->
+    <div ng-controller="testingScope as ctrl3">
+      {{ctrl3.value}}
     </div>
   </div>
 

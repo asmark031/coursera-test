@@ -5,12 +5,32 @@
         angular.module('ShoppingListCheckOff', [])
             .controller('ToBuyController', ToBuyController)
             .controller('AlreadyBoughtController', AlreadyBoughtController)
+            .controller('testingFilter', testingFilter)
+            .controller('testingScope',testingScope)
+            .filter('custom', customFilterFactory)
             .service('ShoppingListCheckOffService', ShoppingListCheckOffService);
 
+        function testingScope(){
+            this.value = "hello from tesingScope";
+        }
+
+        //filter function 
+        testingFilter.$inject = ['$scope','customFilter']
+        function testingFilter($scope,customFilter){
+            $scope.hello = customFilter("hello");
+        }
+
+        var searchString = "";
+        function customFilterFactory(){
+            return function(input){
+                return input.indexOf(searchString) == -1;
+            }
+        }
 
         ToBuyController.$inject = ['ShoppingListCheckOffService'];
         function ToBuyController(ShoppingListCheckOffService) {
             var itemAdder = this;
+            console.log(this);
             itemAdder.Items = [{ Name: "cookies", Quantity: 2 }, { Name: "Biscuits", Quantity: 10 }, { Name: "Maggie", Quantity: 4 }, { Name: "Cake", Quantity: 1 }, { Name: "Water bottles", Quantity: 2 }]
             angular.forEach(itemAdder.Items, function (value, key) {
                 // console.log(key + ': ' + value);
