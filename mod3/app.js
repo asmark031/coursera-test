@@ -43,7 +43,7 @@
                         //     };
                         // });
                         narrow.bought = response.data.menu_items.filter(function (item) {
-                            return (item.description.indexOf(value) !== -1);
+                            return (item.description.toLowerCase().indexOf(value.toLowerCase()) !== -1);
                         });
                         console.log(narrow.bought);
                     })
