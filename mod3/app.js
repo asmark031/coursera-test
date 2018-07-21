@@ -45,6 +45,11 @@
                         narrow.bought = response.data.menu_items.filter(function (item) {
                             return (item.description.toLowerCase().indexOf(value.toLowerCase()) !== -1);
                         });
+                        if (narrow.bought == "") {
+                            console.log("from the main loop" + narrow.bought);
+                            narrow.showError = true;
+                            return;
+                        }
                         console.log(narrow.bought);
                     })
                     .catch(function (error) {
