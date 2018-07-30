@@ -42,10 +42,11 @@
                         //         narrow.bought.push(oneItem)
                         //     };
                         // });
+
                         narrow.bought = response.data.menu_items.filter(function (item) {
                             return (item.description.indexOf(value) !== -1);
                         });
-                        console.log(narrow.bought);
+                        console.log(response);
                     })
                     .catch(function (error) {
                         console.log("Something went terribly wrong.");
