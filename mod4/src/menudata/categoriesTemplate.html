@@ -5,8 +5,8 @@
     </tr>
     <tr ng-repeat="item in $ctrl.items">
         <td>
-            <button ui-sref="items({itemId: item.short_name})">{{item.short_name}}</button>
+            {{item.short_name}}
         </td>
-        <td>          {{item.name}}</td>
+        <td>     <button ui-sref="items({itemId: item.short_name})"></button>     {{item.name}}  </button></td>
     </tr>
 </table>
